@@ -12,7 +12,8 @@ module.exports = {
     app: './client',
   },
   module: {
-    rules: [{
+    rules: [
+      {
       test: /\.jsx?$/,
       loader: 'babel-loader',
       options: {
@@ -23,10 +24,18 @@ module.exports = {
           }],
           '@babel/preset-react',
         ],
-        plugins: ["react-refresh/babel"]
+        plugins: [
+          "@babel/plugin-proposal-class-properties",
+          "react-refresh/babel"
+        ]
       },
       exclude: path.join(__dirname, 'node_modules'),
-    }],
+    },
+    {
+      test: /\.css?$/,
+      use: ['style-loader', 'css-loader'],
+    },
+    ],
   },
   plugins: [
     new ReactRefreshWebpackPlugin(),

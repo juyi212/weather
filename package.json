@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack",
+    "dev": "webpack server --env development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "juyi",
@@ -19,8 +19,12 @@
     "@babel/preset-react": "^7.16.7",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.4",
     "babel-loader": "^8.2.3",
+    "css-loader": "^6.7.1",
     "react-refresh": "^0.11.0",
+    "style-loader": "^3.3.1",
+    "ts-loader": "^9.2.8",
     "webpack": "^5.70.0",
-    "webpack-cli": "^4.9.2"
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4"
   }
 }

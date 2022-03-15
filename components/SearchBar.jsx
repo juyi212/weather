@@ -1,9 +1,9 @@
 import React from 'react';
 
-const App = () => {
+const SearchBar = () => {
     return (
         <div>제발 </div>
     )
 }
 
-export default App;
+export default SearchBar;
