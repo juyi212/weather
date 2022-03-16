@@ -1,17 +1,19 @@
 import React from 'react';
 import "./index.css";
-import WeatherInfo from '../../components/WeatherInfo'
+import WeatherDetail from '../../components/WeatherDetail'
+import SearchBar from '../../components/SearchBar';
 
 const MainPage = () => {
     return (
-        <>
-            <span>날짜</span>
-            
+        <div>
             <aside >
-                <div>안녕</div>
+                <SearchBar />
             </aside>
-            <WeatherInfo />
-        </>
+            <div className="container">
+                <span className="date">날짜</span>
+                <WeatherDetail />
+            </div>
+        </div>
     )
 }
 

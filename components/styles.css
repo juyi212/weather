@@ -1,0 +1,15 @@
+input {
+    all: unset;
+    border-bottom: 1px solid;
+    width: 100%;
+}
+
+.weather-detail{
+    color: red;
+    padding: 70px;
+}
+
+.searchbar-container{
+    padding: 70px;
+}
+
