@@ -1,8 +1,11 @@
 import React from 'react';
+import "./styles.css";
 
 const WeatherInfo = () => {
     return (
-        <div>제발 </div>
+        <div className='weather-info'>
+                날씨 정보  
+        </div>
     )
 }
 
