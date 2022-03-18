@@ -1,5 +1,8 @@
 const path = require('path');
+const dotenv = require('dotenv')
+dotenv.config()
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const webpack  = require('webpack');
 
 module.exports = {
   name: 'weather',
@@ -39,6 +42,9 @@ module.exports = {
   },
   plugins: [
     new ReactRefreshWebpackPlugin(),
+    new webpack.DefinePlugin({
+      "process.env" : JSON.stringify(process.env)
+    })
   ],
   output: {
     path: path.join(__dirname, 'dist'),

@@ -1,13 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import "./index.css";
-import MainPage from './pages/main/index';
+import App from './App';
 
 ReactDOM.render(
-    <div className='weather-default'>
-        <MainPage />
-    </div>
-    
-    
-    
+    <App />
     , document.querySelector('#root'));
