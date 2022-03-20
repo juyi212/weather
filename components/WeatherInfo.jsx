@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import "./styles.css";
+import { WeatherDataContext } from '../pages/main';
 
-const WeatherInfo = () => {
+const WeatherInfo = ({cityName}) => {
+    const {weatherData} = useContext(WeatherDataContext)
     return (
         <div className='weather-info'>
-                날씨 정보  
+            <div>{weatherData.sys.country}</div>
+            <div>{cityName}</div>
         </div>
     )
 }
