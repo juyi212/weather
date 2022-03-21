@@ -39,7 +39,7 @@ const SearchBar = ({changeCityName}) => {
                     onChange={onChange} 
                     value={selected} 
                     placeholder="Enter city name"/>
-                <FontAwesomeIcon icon={faSearch} className="search-icon" size="lg"/>         
+                <i className="fas fa-search search-icon" size="lg"></i>
             </form>
         </div>
     )

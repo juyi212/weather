@@ -6,6 +6,7 @@ function App() {
     return(
         <div className='weather-default'>
             <MainPage />
+            <footer> by Juyi </footer>
         </div>
     )
 }

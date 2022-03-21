@@ -2,8 +2,8 @@ import React, {useContext, useState, useEffect } from 'react';
 import "./styles.css";
 import { WeatherDataContext } from '../pages/main';
 
-const currentCelsisTemp = (max, min) => { 
-    return [(max - 273.15).toFixed(2), (min - 273.15).toFixed(2)]
+export const currentCelsisTemp = (temp) => { 
+    return (temp - 273.15).toFixed(2)
 }
 
 
@@ -14,10 +14,10 @@ const WeatherDetail = () => {
 
     useEffect(() => {
         if (weatherData.main.temp) {
-            let [max_temp, min_temp] = currentCelsisTemp(weatherData.main.temp_max, weatherData.main.temp_min)
+            let max_temp = currentCelsisTemp(weatherData.main.temp_max)
+            let min_temp = currentCelsisTemp(weatherData.main.temp_min)
             setMaxTemp(max_temp)
             setMinTemp(min_temp)
-            console.log(maxTemp)
         }
     }, [weatherData.main.temp])
 
@@ -36,7 +36,7 @@ const WeatherDetail = () => {
             </div>
             <div className="detail-box">
                 <div>Wind</div>
-                <div>{weatherData.main.speed}km/h</div>
+                <div>{weatherData.wind.speed}km/h</div>
             </div>
             <div className="detail-box">
                 <div>Cloudy</div>
