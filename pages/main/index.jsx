@@ -3,6 +3,11 @@ import "./index.css";
 import WeatherDetail from '../../components/WeatherDetail'
 import WeatherInfo from '../../components/WeatherInfo'
 import SearchBar from '../../components/SearchBar';
+import DailyWeather from '../../components/DailyWeather';
+import axios from 'axios';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
 export const WeatherDataContext = createContext()
 
@@ -18,11 +23,18 @@ const initialItems = {
     timezone: 0,
 }
 
+const settings =  {
+    infinite: false,
+    slidesToShow: 8,
+    slidesToScroll: 3
+}
+
 
 const MainPage = () => {
     const [weatherData, setWeatherData] = useState(initialItems)
     const [cityName, setCityName] = useState("")
-    console.log(weatherData)
+    const [forcastToggle, setForcastToggle] = useState(false)
+    const [dailyWeatherData, setDailyWeatherData] = useState(["1","2","3","4","5","7","8","9"])
     const changeWeatherData = (newData) => {
         setWeatherData({
             coord: newData.coord,
@@ -37,32 +49,48 @@ const MainPage = () => {
         })
 
     }
+    
+    useEffect(async() => {
+        if (cityName !== ""){
+            const DailyWeatherData = await axios.get(
+                `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`)
+                .catch( err => console.log(err))
+                const newData = DailyWeatherData.data.list
+                const newDailyWeatherData = newData.splice(0,20)
+                setDailyWeatherData(newDailyWeatherData)
+        }
+    },[cityName])
 
     const changeCityName = useCallback((event) => {
         setCityName(event)
     })
+
+    const onChangeToggle = () => setForcastToggle((prev) => !prev)
 
     return (
         <WeatherDataContext.Provider value={{weatherData, changeWeatherData}}>
             <div className="container">
                 <h1>Weather web</h1>
                 <SearchBar changeCityName = {changeCityName}/>
-
-                {/* <div className="detail">
-                    <div>
-                        <WeatherInfo cityName = {cityName}/>
-                    </div>
-                    <WeatherDetail />
-                </div> */}
-
                 {cityName && 
-                    <div className="detail">
-                        <div>
-                            <WeatherInfo cityName = {cityName}/>
-                        </div>
-                        <WeatherDetail />
+                    <div className="weather-detail-box">
+                        <div className="detail">
+                            <div>
+                                <WeatherInfo cityName = {cityName}/>
+                            </div>
+                            <WeatherDetail />
+                        </div> 
+                        <div className="forcast" onClick ={onChangeToggle}> Forcast ▼</div>
+                        {forcastToggle &&
+                            <Slider {...settings}>
+                                    {dailyWeatherData.map((daily, i) => (          
+                                        <DailyWeather key={i} dailyWeather={daily}/>
+                                    ))}
+                            </Slider>
+                            }
                     </div>
-                    }
+                }
+
             </div>
         </WeatherDataContext.Provider>
     )

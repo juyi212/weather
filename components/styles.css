@@ -62,4 +62,14 @@ input {
     font-size: 23px;
 }
 
+.weather-daily-box {
+    display: flex;
+    flex-direction: column;
+    background-color: darkgrey;
+    border-radius: 20px;
+    margin-right: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
 

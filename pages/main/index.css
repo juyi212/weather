@@ -13,6 +13,7 @@ h2 {
     margin-top: 0px;
 }
 
+
 .container{
     display: flex;
     justify-content: center;
@@ -20,17 +21,39 @@ h2 {
     flex-direction: column;
     min-height: 100vh;
 }
-
+.weather-detail-box {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    margin-top: 10px;
+}
 .detail {
     display: flex;
-    width: 90%;
+    width: auto;
 }
 
 
-.date {
-    padding: 70px;
+.forcast {
+    margin-top: 20px;
+    font-size: 25px;
 }
 
+.forcast {
+    font-weight: bold;
+    animation: bell 3s linear;
+}
+
+@keyframes bell{
+    0%, 50%{
+      transform: rotate(0deg);
+      }
+    5%, 15%, 25%, 35%, 45% {
+      transform: rotate(1deg);
+    }
+    10%, 20%, 30%, 40% {
+      transform: rotate(-1deg);
+    }
+  }
 
 
 

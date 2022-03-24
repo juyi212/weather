@@ -20,7 +20,7 @@ const getToday = (data) => {
     return `${hour}:${min}`;
 }
 
-const changeIcon = (icon) => {
+export const changeIcon = (icon) => {
     if (icon === 'Clouds') {
         return <i className="fas fa-cloud-sun fa-3x" ></i>
     } else if ( icon === "Clear") {
