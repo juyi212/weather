@@ -31,6 +31,7 @@ const settings =  {
 
 
 const MainPage = () => {
+    const [thereIsNoResult,setThereIsNoResult] = useState(false)
     const [weatherData, setWeatherData] = useState(initialItems)
     const [cityName, setCityName] = useState("")
     const [forcastToggle, setForcastToggle] = useState(false)
@@ -54,7 +55,7 @@ const MainPage = () => {
         if (cityName !== ""){
             const DailyWeatherData = await axios.get(
                 `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`)
-                .catch( err => console.log(err))
+                .catch((err) => console.log(err))
                 const newData = DailyWeatherData.data.list
                 const newDailyWeatherData = newData.splice(0,20)
                 setDailyWeatherData(newDailyWeatherData)
@@ -62,7 +63,12 @@ const MainPage = () => {
     },[cityName])
 
     const changeCityName = useCallback((event) => {
-        setCityName(event)
+        if (event === "err") {
+            setThereIsNoResult(true)
+        } else {
+            setCityName(event)
+            setThereIsNoResult(false)
+        }
     })
 
     const onChangeToggle = () => setForcastToggle((prev) => !prev)
@@ -72,7 +78,7 @@ const MainPage = () => {
             <div className="container">
                 <h1>Weather web</h1>
                 <SearchBar changeCityName = {changeCityName}/>
-                {cityName && 
+                {cityName &&
                     <div className="weather-detail-box">
                         <div className="detail">
                             <div>
@@ -80,7 +86,7 @@ const MainPage = () => {
                             </div>
                             <WeatherDetail />
                         </div> 
-                        <div className="forcast" onClick ={onChangeToggle}> Forcast ▼</div>
+                        <div className="forcast" onClick ={onChangeToggle}> 3 hour forecast ▼</div>
                         {forcastToggle &&
                             <Slider {...settings}>
                                     {dailyWeatherData.map((daily, i) => (          
@@ -88,6 +94,11 @@ const MainPage = () => {
                                     ))}
                             </Slider>
                             }
+                    </div> 
+                }
+                {thereIsNoResult && 
+                    <div className="no-result">
+                        Sorry, No matching results found !
                     </div>
                 }
 

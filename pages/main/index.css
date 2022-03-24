@@ -32,6 +32,11 @@ h2 {
     width: auto;
 }
 
+.no-result {
+    font-size: 25px;
+    font-weight: bold;
+}
+
 
 .forcast {
     margin-top: 20px;

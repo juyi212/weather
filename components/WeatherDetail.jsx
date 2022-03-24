@@ -28,7 +28,7 @@ const WeatherDetail = () => {
             <div className="detail-title"> Weather Detail</div>
             <div className="detail-box">
                 <div>Max/Min Temp</div>
-                <div>{maxTemp}°C/ {minTemp}°C</div>
+                <h1>{maxTemp}°C/ {minTemp}°C</h1>
             </div>
             <div className="detail-box">
                 <div>Humidity</div>

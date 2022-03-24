@@ -22,7 +22,7 @@ const SearchBar = ({changeCityName}) => {
                 changeCityName(selected)
                 }
                 )
-            .catch( err => console.log(err))
+            .catch( err => changeCityName("err"))
         setSelected("")
     }
 
