@@ -1,9 +1,9 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext,memo} from 'react';
 import "./styles.css";
 import axios from 'axios';
-import { WeatherDataContext } from '../pages/main';
+import { WeatherDataContext } from '../pages';
 
-const SearchBar = ({changeCityName}) => {
+const SearchBar = memo(({changeCityName}) => {
     //const selectList = ["korea","japen","china","london","europe"]
     const [selected, setSelected] = useState("")
     const {changeWeatherData} = useContext(WeatherDataContext)
@@ -41,6 +41,6 @@ const SearchBar = ({changeCityName}) => {
             </form>
         </div>
     )
-}
+})
 
 export default SearchBar;

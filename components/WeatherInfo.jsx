@@ -1,6 +1,6 @@
-import React, {useContext, useState, useEffect} from 'react';
+import React, {useContext, useState, useEffect, memo} from 'react';
 import "./styles.css";
-import { WeatherDataContext } from '../pages/main';
+import { WeatherDataContext } from '../pages';
 import { currentCelsisTemp } from './WeatherDetail'
 
 const getToday = (data) => {
@@ -41,7 +41,7 @@ export const changeIcon = (icon) => {
 }
 
 
-const WeatherInfo = ({cityName}) => {
+const WeatherInfo = memo(({cityName}) => {
     const {weatherData} = useContext(WeatherDataContext)
     const [today, setToday] = useState("")
     const [temperature, setTemperature] = useState("")
@@ -72,6 +72,6 @@ const WeatherInfo = ({cityName}) => {
 
         </div>
     )
-}
+})
 
 export default WeatherInfo;

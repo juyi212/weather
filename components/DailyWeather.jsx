@@ -1,9 +1,9 @@
-import React, {useEffect} from 'react';
+import React, {memo} from 'react';
 import "./styles.css";
 import {changeIcon} from './WeatherInfo'
 import {currentCelsisTemp} from './WeatherDetail'
 
-const DailyWeather = ({dailyWeather}) => {
+const DailyWeather = memo(({dailyWeather}) => {
     return (
         <div className='weather-daily-box'>
             <div>{dailyWeather.dt_txt}</div>
@@ -12,6 +12,6 @@ const DailyWeather = ({dailyWeather}) => {
             <div>{currentCelsisTemp(dailyWeather.main.temp)}°C</div>
         </div>
     )
-}
+})
 
 export default DailyWeather;

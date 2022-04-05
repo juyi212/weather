@@ -1,9 +1,9 @@
-import React, {createContext, useState, useEffect, useCallback} from 'react';
+import React, {createContext, useState, useEffect, useCallback, memo} from 'react';
 import "./index.css";
-import WeatherDetail from '../../components/WeatherDetail'
-import WeatherInfo from '../../components/WeatherInfo'
-import SearchBar from '../../components/SearchBar';
-import DailyWeather from '../../components/DailyWeather';
+import WeatherDetail from '../components/WeatherDetail'
+import WeatherInfo from '../components/WeatherInfo'
+import SearchBar from '../components/SearchBar';
+import DailyWeather from '../components/DailyWeather';
 import axios from 'axios';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
@@ -30,7 +30,7 @@ const settings =  {
 }
 
 
-const MainPage = () => {
+const MainPage = memo(() => {
     const [thereIsNoResult,setThereIsNoResult] = useState(false)
     const [weatherData, setWeatherData] = useState(initialItems)
     const [cityName, setCityName] = useState("")
@@ -65,6 +65,7 @@ const MainPage = () => {
     const changeCityName = useCallback((event) => {
         if (event === "err") {
             setThereIsNoResult(true)
+            setCityName("")
         } else {
             setCityName(event)
             setThereIsNoResult(false)
@@ -101,10 +102,9 @@ const MainPage = () => {
                         Sorry, No matching results found !
                     </div>
                 }
-
             </div>
         </WeatherDataContext.Provider>
     )
-}
+})
 
 export default MainPage;

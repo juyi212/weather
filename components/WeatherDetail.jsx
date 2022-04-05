@@ -1,13 +1,13 @@
-import React, {useContext, useState, useEffect } from 'react';
+import React, {useContext, useState, useEffect, memo } from 'react';
 import "./styles.css";
-import { WeatherDataContext } from '../pages/main';
+import { WeatherDataContext } from '../pages';
 
 export const currentCelsisTemp = (temp) => { 
     return (temp - 273.15).toFixed(2)
 }
 
 
-const WeatherDetail = () => {
+const WeatherDetail = memo(() => {
     const [maxTemp, setMaxTemp] = useState("0")
     const [minTemp, setMinTemp] = useState("0")
     const {weatherData} = useContext(WeatherDataContext)
@@ -44,6 +44,6 @@ const WeatherDetail = () => {
             </div>
         </div>
     )
-}
+})
 
 export default WeatherDetail;
