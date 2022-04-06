@@ -34,20 +34,6 @@ module.exports = {
       },
       exclude: path.join(__dirname, 'node_modules'),
     },
-    // {
-    //   test: /\.(png|jpe?g|gif)$/i,
-    //   use: [
-    //     {
-    //       loader: 'file-loader',
-    //       options: {
-    //         name: '[name].[ext]',
-    //         outputPath: 'static/assets/',
-    //         publicPath: 'static/assets/',
-    //         postTransformPublicPath: (p) => `__webpack_public_path__ + ${p}`,
-    //       }
-    //     },
-    //   ],
-    // },
     {
       test: /\.css?$/,
       use: ['style-loader', 'css-loader'],
