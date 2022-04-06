@@ -35,6 +35,12 @@ module.exports = {
       exclude: path.join(__dirname, 'node_modules'),
     },
     {
+      test: /\.(png|jpg|jpeg)$/,
+      use:[
+        'file-loader'
+      ]
+    },
+    {
       test: /\.css?$/,
       use: ['style-loader', 'css-loader'],
     },
@@ -47,7 +53,7 @@ module.exports = {
     })
   ],
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, './dist'),
     filename: '[name].js',
     publicPath: '/dist',
   },
