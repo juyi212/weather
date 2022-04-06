@@ -42,7 +42,6 @@ module.exports = {
           loader: 'file-loader',
           options: {
             publicPath: '/dist',
-            name: '[name].[ext]',
             postTransformPublicPath: (p) => `__webpack_public_path__ + ${p}`,
           }
         },
