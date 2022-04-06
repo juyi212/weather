@@ -36,10 +36,14 @@ module.exports = {
     },
     {
       test: /\.(png|jpe?g|gif)$/i,
-      loader: 'file-loader',
-      options: {
-        name: './[name].[ext]'
-      }
+      use: [
+        {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]'
+          }
+        },
+      ],
     },
     {
       test: /\.css?$/,
