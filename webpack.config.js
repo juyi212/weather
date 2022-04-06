@@ -38,7 +38,7 @@ module.exports = {
       test: /\.(png|jpe?g|gif)$/i,
       loader: 'file-loader',
       options: {
-        name: 'dirname/[contenthash].[ext]',
+        name: 'assets/[contenthash].[ext]'
       }
     },
     {
