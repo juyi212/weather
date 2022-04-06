@@ -35,10 +35,11 @@ module.exports = {
       exclude: path.join(__dirname, 'node_modules'),
     },
     {
-      test: /\.(png|jpg|jpeg)$/,
-      use:[
-        'file-loader'
-      ]
+      test: /\.(png|jpe?g|gif)$/i,
+      loader: 'file-loader',
+      options: {
+        publicPath: './dist'
+      }
     },
     {
       test: /\.css?$/,
@@ -53,9 +54,9 @@ module.exports = {
     })
   ],
   output: {
-    path: path.join(__dirname, './dist'),
+    path: path.join(__dirname, 'dist'),
     filename: '[name].js',
-    publicPath: 'dist/',
+    publicPath: '/dist',
   },
   devServer: {
     devMiddleware: { publicPath: '/dist' },
