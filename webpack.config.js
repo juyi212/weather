@@ -69,3 +69,8 @@ module.exports = {
     hot: true
   }
 };
+
+module.exports = {
+  mode: 'production',
+  devtool: 'source-map', // 새로 추가된 source map 설정인데 아래에서 다시 설명.
+}
